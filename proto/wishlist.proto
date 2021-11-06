@@ -37,7 +37,7 @@ message Wishlist {
 }
 
 message CreateWishlistReq {
-  string Wishlist = 1;
+  Wishlist Wishlist = 1;
 }
 
 message CreateWishListRes {
