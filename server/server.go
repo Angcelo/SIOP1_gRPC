@@ -20,7 +20,7 @@ type Server struct {
 }
 
 func (s *Server) create(ctx context.Context, in *pb.CreateWishlistReq) (*pb.CreateWishListRes, error) {
-	fmt.Println("Creating wishlist" + in.Wishlist)
+	fmt.Println("Creating wishlist" + in.Wishlist.Name)
 	return &pb.CreateWishListRes{
 		WishlistId: generateId(),
 	}, nil
