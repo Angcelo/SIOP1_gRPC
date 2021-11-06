@@ -2,11 +2,12 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
 
-	pb "github.com/Angcelo/SIOP1-PY2/gRPC/proto"
+	pb "github.com/Angcelo/SIOP1_gRPC/proto"
 )
 
 func generateId() string {
@@ -19,7 +20,7 @@ type Server struct {
 }
 
 func (s *Server) create(ctx context.Context, in *pb.CreateWishlistReq) (*pb.CreateWishListRes, error) {
-
+	fmt.Println("Creating wishlist" + in.WishlistId)
 	return &pb.CreateWishListRes{
 		WishlistId: generateId(),
 	}, nil

@@ -1,4 +1,4 @@
-module github.com/Angcelo/SIOP1-PY2/gRPC/proto
+module github.com/Angcelo/SIOP1_gRPC/proto
 
 go 1.17
 
