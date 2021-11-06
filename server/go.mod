@@ -2,7 +2,7 @@ module github.com/Angcelo/SIOP1_gRPC/server
 
 go 1.17
 
-require github.com/Angcelo/SIOP1_gRPC/proto v0.0.0-20211106050812-3af4c2288420
+require github.com/Angcelo/SIOP1_gRPC/proto v0.0.1
 
 require (
 	github.com/golang/protobuf v1.5.0 // indirect
