@@ -7,7 +7,7 @@ option go_package = "github.com/Angcelo/SIOP1_gRPC/proto";
 message Item {
   enum Itempriority {
     LOW = 0;
-    MEDIUM = 50;
+    MEDIUM = 50;  
     HIGH = 100;
   }
 
