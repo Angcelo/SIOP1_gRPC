@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	pb "github.com/Angcelo/SIOP1_gRPC/proto"
+	pb "grupo5/proto"
 )
 
 func generateId() string {

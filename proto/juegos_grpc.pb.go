@@ -18,9 +18,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WishListServiceClient interface {
-	Create(ctx context.Context, in *CreateWishlistReq, opts ...grpc.CallOption) (*CreateWishListRes, error)
-	Add(ctx context.Context, in *AddItemReq, opts ...grpc.CallOption) (*AddItemRes, error)
-	List(ctx context.Context, in *ListWishListReq, opts ...grpc.CallOption) (*ListWishListRes, error)
+	Juego1(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error)
+	Juego2(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error)
+	Juego3(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error)
 }
 
 type wishListServiceClient struct {
@@ -31,27 +31,27 @@ func NewWishListServiceClient(cc grpc.ClientConnInterface) WishListServiceClient
 	return &wishListServiceClient{cc}
 }
 
-func (c *wishListServiceClient) Create(ctx context.Context, in *CreateWishlistReq, opts ...grpc.CallOption) (*CreateWishListRes, error) {
-	out := new(CreateWishListRes)
-	err := c.cc.Invoke(ctx, "/grpc.WishListService/Create", in, out, opts...)
+func (c *wishListServiceClient) Juego1(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
+	out := new(JuegoResp)
+	err := c.cc.Invoke(ctx, "/grpc.WishListService/Juego1", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wishListServiceClient) Add(ctx context.Context, in *AddItemReq, opts ...grpc.CallOption) (*AddItemRes, error) {
-	out := new(AddItemRes)
-	err := c.cc.Invoke(ctx, "/grpc.WishListService/Add", in, out, opts...)
+func (c *wishListServiceClient) Juego2(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
+	out := new(JuegoResp)
+	err := c.cc.Invoke(ctx, "/grpc.WishListService/Juego2", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wishListServiceClient) List(ctx context.Context, in *ListWishListReq, opts ...grpc.CallOption) (*ListWishListRes, error) {
-	out := new(ListWishListRes)
-	err := c.cc.Invoke(ctx, "/grpc.WishListService/List", in, out, opts...)
+func (c *wishListServiceClient) Juego3(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
+	out := new(JuegoResp)
+	err := c.cc.Invoke(ctx, "/grpc.WishListService/Juego3", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,9 +62,9 @@ func (c *wishListServiceClient) List(ctx context.Context, in *ListWishListReq, o
 // All implementations must embed UnimplementedWishListServiceServer
 // for forward compatibility
 type WishListServiceServer interface {
-	Create(context.Context, *CreateWishlistReq) (*CreateWishListRes, error)
-	Add(context.Context, *AddItemReq) (*AddItemRes, error)
-	List(context.Context, *ListWishListReq) (*ListWishListRes, error)
+	Juego1(context.Context, *JuegoReq) (*JuegoResp, error)
+	Juego2(context.Context, *JuegoReq) (*JuegoResp, error)
+	Juego3(context.Context, *JuegoReq) (*JuegoResp, error)
 	mustEmbedUnimplementedWishListServiceServer()
 }
 
@@ -72,14 +72,14 @@ type WishListServiceServer interface {
 type UnimplementedWishListServiceServer struct {
 }
 
-func (UnimplementedWishListServiceServer) Create(context.Context, *CreateWishlistReq) (*CreateWishListRes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+func (UnimplementedWishListServiceServer) Juego1(context.Context, *JuegoReq) (*JuegoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Juego1 not implemented")
 }
-func (UnimplementedWishListServiceServer) Add(context.Context, *AddItemReq) (*AddItemRes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Add not implemented")
+func (UnimplementedWishListServiceServer) Juego2(context.Context, *JuegoReq) (*JuegoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Juego2 not implemented")
 }
-func (UnimplementedWishListServiceServer) List(context.Context, *ListWishListReq) (*ListWishListRes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+func (UnimplementedWishListServiceServer) Juego3(context.Context, *JuegoReq) (*JuegoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Juego3 not implemented")
 }
 func (UnimplementedWishListServiceServer) mustEmbedUnimplementedWishListServiceServer() {}
 
@@ -94,56 +94,56 @@ func RegisterWishListServiceServer(s grpc.ServiceRegistrar, srv WishListServiceS
 	s.RegisterService(&WishListService_ServiceDesc, srv)
 }
 
-func _WishListService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateWishlistReq)
+func _WishListService_Juego1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JuegoReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WishListServiceServer).Create(ctx, in)
+		return srv.(WishListServiceServer).Juego1(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc.WishListService/Create",
+		FullMethod: "/grpc.WishListService/Juego1",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WishListServiceServer).Create(ctx, req.(*CreateWishlistReq))
+		return srv.(WishListServiceServer).Juego1(ctx, req.(*JuegoReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WishListService_Add_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddItemReq)
+func _WishListService_Juego2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JuegoReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WishListServiceServer).Add(ctx, in)
+		return srv.(WishListServiceServer).Juego2(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc.WishListService/Add",
+		FullMethod: "/grpc.WishListService/Juego2",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WishListServiceServer).Add(ctx, req.(*AddItemReq))
+		return srv.(WishListServiceServer).Juego2(ctx, req.(*JuegoReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WishListService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListWishListReq)
+func _WishListService_Juego3_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JuegoReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WishListServiceServer).List(ctx, in)
+		return srv.(WishListServiceServer).Juego3(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc.WishListService/List",
+		FullMethod: "/grpc.WishListService/Juego3",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WishListServiceServer).List(ctx, req.(*ListWishListReq))
+		return srv.(WishListServiceServer).Juego3(ctx, req.(*JuegoReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -156,18 +156,18 @@ var WishListService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*WishListServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Create",
-			Handler:    _WishListService_Create_Handler,
+			MethodName: "Juego1",
+			Handler:    _WishListService_Juego1_Handler,
 		},
 		{
-			MethodName: "Add",
-			Handler:    _WishListService_Add_Handler,
+			MethodName: "Juego2",
+			Handler:    _WishListService_Juego2_Handler,
 		},
 		{
-			MethodName: "List",
-			Handler:    _WishListService_List_Handler,
+			MethodName: "Juego3",
+			Handler:    _WishListService_Juego3_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "wishlist.proto",
+	Metadata: "juegos.proto",
 }

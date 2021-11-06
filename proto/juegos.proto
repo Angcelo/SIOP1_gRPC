@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "github.com/Angcelo/SIOP1_gRPC/proto";
+
+message Juego {
+  int32 noJugadores = 1;
+  string nombreJuego = 2;
+}
+
+message JuegoReq {
+  string nombreJuego = 1;
+  int32 noJugadores = 2;
+}
+
+message JuegoResp {
+  string message = 1;
+  int32 estado = 2;
+}
+
+service WishListService {
+  rpc Juego1(JuegoReq) returns (JuegoResp);
+  rpc Juego2(JuegoReq) returns (JuegoResp);
+  rpc Juego3(JuegoReq) returns (JuegoResp);
+}   
