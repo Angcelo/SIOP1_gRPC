@@ -14,158 +14,158 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// WishListServiceClient is the client API for WishListService service.
+// JuegoListServiceClient is the client API for JuegoListService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type WishListServiceClient interface {
+type JuegoListServiceClient interface {
 	Juego1(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error)
 	Juego2(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error)
 	Juego3(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error)
 }
 
-type wishListServiceClient struct {
+type juegoListServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewWishListServiceClient(cc grpc.ClientConnInterface) WishListServiceClient {
-	return &wishListServiceClient{cc}
+func NewJuegoListServiceClient(cc grpc.ClientConnInterface) JuegoListServiceClient {
+	return &juegoListServiceClient{cc}
 }
 
-func (c *wishListServiceClient) Juego1(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
+func (c *juegoListServiceClient) Juego1(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
 	out := new(JuegoResp)
-	err := c.cc.Invoke(ctx, "/grpc.WishListService/Juego1", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/grpc.JuegoListService/Juego1", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wishListServiceClient) Juego2(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
+func (c *juegoListServiceClient) Juego2(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
 	out := new(JuegoResp)
-	err := c.cc.Invoke(ctx, "/grpc.WishListService/Juego2", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/grpc.JuegoListService/Juego2", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wishListServiceClient) Juego3(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
+func (c *juegoListServiceClient) Juego3(ctx context.Context, in *JuegoReq, opts ...grpc.CallOption) (*JuegoResp, error) {
 	out := new(JuegoResp)
-	err := c.cc.Invoke(ctx, "/grpc.WishListService/Juego3", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/grpc.JuegoListService/Juego3", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// WishListServiceServer is the server API for WishListService service.
-// All implementations must embed UnimplementedWishListServiceServer
+// JuegoListServiceServer is the server API for JuegoListService service.
+// All implementations must embed UnimplementedJuegoListServiceServer
 // for forward compatibility
-type WishListServiceServer interface {
+type JuegoListServiceServer interface {
 	Juego1(context.Context, *JuegoReq) (*JuegoResp, error)
 	Juego2(context.Context, *JuegoReq) (*JuegoResp, error)
 	Juego3(context.Context, *JuegoReq) (*JuegoResp, error)
-	mustEmbedUnimplementedWishListServiceServer()
+	mustEmbedUnimplementedJuegoListServiceServer()
 }
 
-// UnimplementedWishListServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedWishListServiceServer struct {
+// UnimplementedJuegoListServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedJuegoListServiceServer struct {
 }
 
-func (UnimplementedWishListServiceServer) Juego1(context.Context, *JuegoReq) (*JuegoResp, error) {
+func (UnimplementedJuegoListServiceServer) Juego1(context.Context, *JuegoReq) (*JuegoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Juego1 not implemented")
 }
-func (UnimplementedWishListServiceServer) Juego2(context.Context, *JuegoReq) (*JuegoResp, error) {
+func (UnimplementedJuegoListServiceServer) Juego2(context.Context, *JuegoReq) (*JuegoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Juego2 not implemented")
 }
-func (UnimplementedWishListServiceServer) Juego3(context.Context, *JuegoReq) (*JuegoResp, error) {
+func (UnimplementedJuegoListServiceServer) Juego3(context.Context, *JuegoReq) (*JuegoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Juego3 not implemented")
 }
-func (UnimplementedWishListServiceServer) mustEmbedUnimplementedWishListServiceServer() {}
+func (UnimplementedJuegoListServiceServer) mustEmbedUnimplementedJuegoListServiceServer() {}
 
-// UnsafeWishListServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to WishListServiceServer will
+// UnsafeJuegoListServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to JuegoListServiceServer will
 // result in compilation errors.
-type UnsafeWishListServiceServer interface {
-	mustEmbedUnimplementedWishListServiceServer()
+type UnsafeJuegoListServiceServer interface {
+	mustEmbedUnimplementedJuegoListServiceServer()
 }
 
-func RegisterWishListServiceServer(s grpc.ServiceRegistrar, srv WishListServiceServer) {
-	s.RegisterService(&WishListService_ServiceDesc, srv)
+func RegisterJuegoListServiceServer(s grpc.ServiceRegistrar, srv JuegoListServiceServer) {
+	s.RegisterService(&JuegoListService_ServiceDesc, srv)
 }
 
-func _WishListService_Juego1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _JuegoListService_Juego1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JuegoReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WishListServiceServer).Juego1(ctx, in)
+		return srv.(JuegoListServiceServer).Juego1(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc.WishListService/Juego1",
+		FullMethod: "/grpc.JuegoListService/Juego1",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WishListServiceServer).Juego1(ctx, req.(*JuegoReq))
+		return srv.(JuegoListServiceServer).Juego1(ctx, req.(*JuegoReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WishListService_Juego2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _JuegoListService_Juego2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JuegoReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WishListServiceServer).Juego2(ctx, in)
+		return srv.(JuegoListServiceServer).Juego2(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc.WishListService/Juego2",
+		FullMethod: "/grpc.JuegoListService/Juego2",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WishListServiceServer).Juego2(ctx, req.(*JuegoReq))
+		return srv.(JuegoListServiceServer).Juego2(ctx, req.(*JuegoReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WishListService_Juego3_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _JuegoListService_Juego3_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JuegoReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WishListServiceServer).Juego3(ctx, in)
+		return srv.(JuegoListServiceServer).Juego3(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc.WishListService/Juego3",
+		FullMethod: "/grpc.JuegoListService/Juego3",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WishListServiceServer).Juego3(ctx, req.(*JuegoReq))
+		return srv.(JuegoListServiceServer).Juego3(ctx, req.(*JuegoReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// WishListService_ServiceDesc is the grpc.ServiceDesc for WishListService service.
+// JuegoListService_ServiceDesc is the grpc.ServiceDesc for JuegoListService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var WishListService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "grpc.WishListService",
-	HandlerType: (*WishListServiceServer)(nil),
+var JuegoListService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "grpc.JuegoListService",
+	HandlerType: (*JuegoListServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Juego1",
-			Handler:    _WishListService_Juego1_Handler,
+			Handler:    _JuegoListService_Juego1_Handler,
 		},
 		{
 			MethodName: "Juego2",
-			Handler:    _WishListService_Juego2_Handler,
+			Handler:    _JuegoListService_Juego2_Handler,
 		},
 		{
 			MethodName: "Juego3",
-			Handler:    _WishListService_Juego3_Handler,
+			Handler:    _JuegoListService_Juego3_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
